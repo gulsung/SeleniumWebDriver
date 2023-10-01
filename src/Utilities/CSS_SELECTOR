@@ -1,0 +1,98 @@
+# --> for id
+By.cssSelector("#logout");
+By.cssSelector("a#logout");
+
+
+. --> for class
+By.cssSelector(".center");
+By.cssSelector("p.center");
+
+By.cssSelector("input");
+By.cssSelector("input[type='text']");
+By.cssSelector("input[type='text'][placeholder='First Name']");
+By.cssSelector("input.form-control[type='text']");
+
+*= --> contains
+^= --> starts-with
+$= --> ends-with
+
+input[class *= form] etc: control-form-box //herhangi bir yerde olabilir
+input[class ^= form] etc: form-control //başta olmalı
+input[class $= form] etc: control-form //sonda olmalı
+
+
++--> bitşik kardeş
+<div id='profile'>
+   <h3>Mr. Neo</h3>
+   <p>The choosen one</p>
+</div>
+By.cssSelector("h3 + p"); h3ün bitşik kardeşini verir
+
+~bütün kardeşler
+<div id='profile'>
+   <h3>Mr. Neo</h3>
+   <p>The choosen one</p>
+   <img src='plc.jpeg'>
+</div>
+By.cssSelector("p ~img");
+By.cssSelector("h3 ~ p");
+
+> child element
+
+<div id='profile'>
+   <h3>Mr. Neo</h3>
+   <p>The choosen one</p>
+   <img src='plc.jpeg'>
+</div>
+By.cssSelector("div >");
+By.cssSelector("#profile img");
+By.cssSelector("#profile p");
+
+:not
+<button type='button' class='submit'>Submit</button>
+<button type='button' class='Add'>Add</button>
+<input type='text'>
+<input type='radio'>
+<input type='email'>
+
+By.cssSelector("button::not(.submit)"); butonlar içerinde class adı submit olmayanları getir
+By.cssSelector("button::not(.radio)"); butonlar içerinde class adı radio olmayanları getir
+
+:nth-child
+<div id='profile'>
+   <h3>Mr. Neo</h3>
+   <p>The choosen one</p>
+   <img src='plc.jpeg'>
+   <button type='button' class='submit'>Submit</button>
+   <button type='button' class='Add'>Add</button>
+   <input type='text'>
+   <input type='radio'>
+   <input type='email'>
+</div>
+
+By.cssSelector("#profile >*:nth-child(2)");  --> p
+By.cssSelector("#profile >button:nth-child(3)");  --> null
+By.cssSelector("#profile >*:nth-child(8)");  --> input (email)
+
+:nth-last-child
+
+<div id='profile'>
+   <h3>Mr. Neo</h3>
+   <p>The choosen one</p>
+   <img src='plc.jpeg'>
+   <button type='button' class='submit'>Submit</button>
+   <button type='button' class='Add'>Add</button>
+   <input type='text'>
+   <input type='radio'>
+   <input type='email'>
+</div>
+By.cssSelector("#profile >*:nth-last-child(2)");  --> input (radio)
+By.cssSelector("#profile >button:nth-last-child(3)");  --> null
+By.cssSelector("#profile >*:nth-last-child(8)");  --> h3
+
+
+
+
+
+
+
